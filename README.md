@@ -1,6 +1,6 @@
 # ADT7320 STM32 HAL Driver
 
-A portable STM32 HAL-based driver for the ADT7320 high-accuracy digital temperature sensor via SPI.
+A STM32 HAL-based driver for the ADT7320 high-accuracy digital temperature sensor via SPI.
 
 ## 🔧 Features
 - 🔗 **Fully compatible with STM32 HAL** — supports **all STM32 MCU series**
@@ -51,7 +51,6 @@ Reads multiple bytes from the EEPROM starting at a given address.
 
 ## 💡 Example
 A complete working example is available in [`example/main.c`](./example/main.c).
-It demonstrates initialization, reading, writing, and working with multiple devices.
 
 ## 📜 License
 This project is released under the [MIT License](./LICENSE).
