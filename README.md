@@ -13,10 +13,14 @@ A STM32 HAL-based driver for the ADT7320 high-accuracy digital temperature senso
 
 1. **Configure SPI in STM32CubeMX**
    - Enable an SPI peripheral (e.g., SPI1)
-   - Set **I²C Speed Mode** to **Standard Mode (100 kHz)** or **Fast Mode (400 kHz)**
+   - Set **Full-Duplex Master**
+   - Set **Data Size** to **8 Bits**
+   - Set **First Bit** to **MSB First**
+   - Set **CPOL** to **High**
+   - Set **CPHA** to **2 Edge**
 
 2. **Configure GPIO (Optional)**
-   - Set up a **GPIO Output** to control the chip select pin
+   - Set up a **GPIO Output** to control the chip select pin of ADT7320
 
 3. **Add the Library to Your Project**
    - **Include** `adt7320.h` in your application code
@@ -26,28 +30,25 @@ A STM32 HAL-based driver for the ADT7320 high-accuracy digital temperature senso
 
 4. **Define EEPROM Configuration**
    - Create one or more `I2C_MemoryTypeDef` instances
-   - Set the I²C handle and the device address (using A0/A1/A2 pin configuration)
+   - Set the SPI handle and the device address (using A0/A1/A2 pin configuration)
 
 5. **Build and Flash**  
    - Use the example in [`example/main.c`](./example/main.c) to guide your implementation
 
 ## 🧪 API Reference
-Each function returns an `I2C_Memory_StatusTypeDef` status code.
+Each function returns an `ADT7320_StatusTypeDef` status code.
 
-### `I2C_Memory_Init(...)`  
+### `ADT7320_Init(...)`  
 Initializes an EEPROM instance, calculates the full device address, and prepares WP pin (if used).
 
-### `I2C_Memory_SingleWrite(...)`  
+### `ADT7320_ReadRegister(...)`  
 Writes a single byte to the specified EEPROM memory address.
 
-### `I2C_Memory_BurstWrite(...)`  
+### `ADT7320_WriteRegister(...)`  
 Writes multiple bytes (burst/page mode) starting from a target memory address.
 
-### `I2C_Memory_SingleRead(...)`  
-Reads one byte from a specified memory address.
-
-### `I2C_Memory_BurstRead(...)`  
-Reads multiple bytes from the EEPROM starting at a given address.
+### `ADT7320_ReadTemperature(...)`  
+Reads the temperature from the ADT7320 IC.
 
 ## 💡 Example
 A complete working example is available in [`example/main.c`](./example/main.c).
