@@ -1,54 +1,46 @@
 # ADT7320 STM32 HAL Driver
 
-A STM32 HAL-based driver for the ADT7320 high-accuracy digital temperature sensor via SPI.
+STM32 HAL-based driver for the **ADT7320** high-accuracy digital temperature sensor over **SPI**.
 
 ## 🔧 Features
-- 🔗 **Fully compatible with STM32 HAL** — supports **all STM32 MCU series**
+- ✅ **Full STM32 HAL compatibility** — supports all STM32 MCU series (F0–F7, G0/G4, H7, L0–L5, U0/U5)
 - 🛡️ **MISRA-C-style design** — clean, safe, and portable for embedded and safety-critical applications
-- Supports read/write to all ADT7320 registers
-- Temperature conversion to °C
-- Easily portable across STM32CubeIDE or IAR Embedded Workbench
+- 📥 Supports read/write to all ADT7320 registers
+- 🌡️ Accurate temperature conversion to degrees Celsius
+- 💼 Works with STM32CubeIDE, Keil MDK, or IAR Embedded Workbench
 
-## ⚙️ How to use this library
+## ⚙️ Getting Started
 
-1. **Configure SPI in STM32CubeMX**
-   - Enable an SPI peripheral (e.g., SPI1)
-   - Set **Full-Duplex Master**
-   - Set **Data Size** to **8 Bits**
-   - Set **First Bit** to **MSB First**
-   - Set **CPOL** to **High**
-   - Set **CPHA** to **2 Edge**
+### 1. Configure SPI in STM32CubeMX
+- Mode: **Full-Duplex Master**
+- Data Size: **8-bit**
+- First Bit: **MSB First**
+- Clock Polarity (CPOL): **High**
+- Clock Phase (CPHA): **2nd Edge**
 
-2. **Configure GPIO (Optional)**
-   - Set up a **GPIO Output** to control the chip select pin of ADT7320
+### 2. Configure Chip Select (CS) Pin (Optional)
+- Add a **GPIO Output** pin for CS (Chip Select)
 
-3. **Add the Library to Your Project**
-   - **Include** `adt7320.h` in your application code
-   - **Add** `adt7320.c` to your compiler
-   - **Set the STM32 MCU series macro** in `adt7320_config.h`
-   - **Add the library folder** to your compiler’s include paths
-
-4. **Define EEPROM Configuration**
-   - Create one or more `I2C_MemoryTypeDef` instances
-   - Set the SPI handle and the device address (using A0/A1/A2 pin configuration)
-
-5. **Build and Flash**  
-   - Use the example in [`example/main.c`](./example/main.c) to guide your implementation
+### 3. Add the Driver to Your Project
+- **Include** `adt7320.h` in your application code
+- **Add** `adt7320.c` to your compiler
+- **Set the STM32 MCU series macro** in `adt7320_config.h`
+- **Add the library folder** to your compiler’s include paths
 
 ## 🧪 API Reference
 Each function returns an `ADT7320_StatusTypeDef` status code.
 
 ### `ADT7320_Init(...)`  
-Initializes an EEPROM instance, calculates the full device address, and prepares WP pin (if used).
+Sends a reset sequence to initialize sensor.
 
 ### `ADT7320_ReadRegister(...)`  
-Writes a single byte to the specified EEPROM memory address.
+Reads data from any ADT7320 register.
 
 ### `ADT7320_WriteRegister(...)`  
-Writes multiple bytes (burst/page mode) starting from a target memory address.
+Writes data to any ADT7320 register.
 
 ### `ADT7320_ReadTemperature(...)`  
-Reads the temperature from the ADT7320 IC.
+Reads and converts the temperature to °C.
 
 ## 💡 Example
 A complete working example is available in [`example/main.c`](./example/main.c).
