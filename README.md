@@ -3,11 +3,11 @@
 STM32 HAL-based driver for the **ADT7320** high-accuracy digital temperature sensor over **SPI**.
 
 ## 🔧 Features
-- ✅ **Full STM32 HAL compatibility** — supports all STM32 MCU series (F0–F7, G0/G4, H7, L0–L5, U0/U5)
-- 🛡️ **MISRA-C-style design** — clean, safe, and portable for embedded and safety-critical applications
-- 🔄 **Modular and portable** — works with STM32CubeIDE, Keil, IAR, or Makefile-based environments
-- 📥 Supports read/write access to all ADT7320 registers
-- 🌡️ Accurate temperature conversion to degrees Celsius
+- **Full STM32 HAL compatibility** — supports all STM32 MCU series (F0–F7, G0/G4, H7, L0–L5, U0/U5)
+- **MISRA-C-style design** — clean, safe, and portable for embedded and safety-critical applications
+- **Modular and portable** — works with STM32CubeIDE, Keil, IAR, or Makefile-based environments
+- Supports read/write access to all ADT7320 registers
+- Accurate temperature conversion to degrees Celsius
 
 ## ⚙️ Getting Started
 
